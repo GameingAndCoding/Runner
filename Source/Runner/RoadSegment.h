@@ -16,7 +16,7 @@ class RUNNER_API ARoadSegment : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ARoadSegment();
-
+	
 
 	//For future use in creating an array of segments
 	
@@ -33,7 +33,7 @@ public:
 	
 	void SpawnSegment();
 	void Clear();
-	
+	void CheckIfDestroyNext();
 	UPROPERTY(VisibleAnywhere, Category = VIEWONLY)
 	AActor* Player;
 	
