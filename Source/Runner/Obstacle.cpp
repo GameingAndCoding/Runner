@@ -4,6 +4,7 @@
 #include "Obstacle.h"
 
 #include "PlayerClass.h"
+#include "PlayerClass2.h"
 #include "Components/BoxComponent.h"
 #include "Engine/Engine.h"
 #include "Kismet/GameplayStatics.h"
@@ -12,8 +13,6 @@
 AObstacle::AObstacle()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
 	PrimaryActorTick.bCanEverTick = true;
 
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
@@ -44,15 +43,15 @@ void AObstacle::Tick(float DeltaTime)
 void AObstacle::OnOverlapBegin(UPrimitiveComponent*  OverLappedComp, AActor* OtherActor,UPrimitiveComponent* OtherComp , int32 OtherBody ,bool bFromSweep,const FHitResult& SweepResult)
 {
 
-	GEngine -> AddOnScreenDebugMessage(-1 , 1.f , FColor:: Green, "Overlap Begin Called");
+	//GEngine -> AddOnScreenDebugMessage(-1 , 1.f , FColor:: Green, "Overlap Begin Called");
 
 
 	Player = Cast<APlayerClass>(OtherActor);
 
-
+	Player2 = Cast<APlayerClass2>(OtherActor);
 
 	if (Player){ Player->Lives --;}
 
-	
+	if (Player2){ Player2->Lives --;}
 }
 

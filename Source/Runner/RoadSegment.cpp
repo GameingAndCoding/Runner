@@ -2,7 +2,7 @@
 
 
 #include "RoadSegment.h"
-
+#include "SegmentOfTheRoad.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -52,6 +52,10 @@ void ARoadSegment::Tick(float DeltaTime)
 			Clear();
 			MovedDistance += 25000;
 		}
+
+
+
+	CheckIfDestroyNext();
 }
 
 
@@ -77,4 +81,23 @@ void ARoadSegment::Clear()
 	}
 }
 
+
+
+void ARoadSegment:: CheckIfDestroyNext()
+{
+	for (int i = 0; i < SavedSegments.Num(); i++) {
+
+		ASegmentOfTheRoad* temp = Cast<ASegmentOfTheRoad> (SavedSegments[i]);
+
+		if(temp->DestroyNext)
+		{
+			ASegmentOfTheRoad* temporary = Cast<ASegmentOfTheRoad> (SavedSegments[i+1]);
+			
+			temporary -> Destroy();
+
+			UE_LOG(LogTemp, Warning, TEXT("Hello"));
+		}
+		
+	}
+}
 

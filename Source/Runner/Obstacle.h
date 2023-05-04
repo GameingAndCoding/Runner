@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PlayerClass.h"
+#include "PlayerClass2.h"
 #include "GameFramework/Actor.h"
 #include "Obstacle.generated.h"
 
@@ -33,4 +34,7 @@ public:
 
 		UPROPERTY(EditAnywhere , BlueprintReadWrite , Category = Player)
 		APlayerClass* Player;
+
+		UPROPERTY(EditAnywhere , BlueprintReadWrite , Category = Player)
+		APlayerClass2* Player2;
 };
