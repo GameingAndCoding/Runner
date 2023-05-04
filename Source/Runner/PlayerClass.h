@@ -1,15 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-#include "PlayerClass2.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "GameFramework/Actor.h"
+#include "Microsoft/AllowMicrosoftPlatformTypes.h"
 #include "PlayerClass.generated.h"
 
-
 USTRUCT(BlueprintType)
-struct FScore2
+struct FScore
 {
 	GENERATED_BODY()
 
@@ -42,8 +41,6 @@ public:
 	float ZPosition;
 	bool isJumping;
 
-	bool GameOver;
-	
 
 	UPROPERTY(VisibleAnywhere, Category = VIEWONLY)
 	int Lives = 3;
@@ -54,27 +51,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Movement")
 	void Jump();
 
-	UFUNCTION(BlueprintCallable, Category="Movement")
-	void MoveCharacter2Player(int change);
-	
-	UFUNCTION(BlueprintCallable, Category="Movement")
-	void Jump2Player();
-	
-	UFUNCTION(BlueprintCallable, Category="Player2")
-		void SpawnPlayer2();
 
-	
 	void Die();
-
-	UPROPERTY(EditAnywhere, Category = OtherPlayer);
-	TSubclassOf<AActor> SpawnThis;
-
-	UPROPERTY(EditAnywhere, Category = OtherPlayer);
-	AActor* Player2Instance;
-	
-	UPROPERTY(EditAnywhere, Category = OtherPlayer);
-	APlayerClass2* Player2Class;
-	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -87,6 +65,6 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-	FScore2 Fscore;
+	FScore Fscore;
 
 };
